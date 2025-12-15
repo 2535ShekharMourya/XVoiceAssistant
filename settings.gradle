@@ -5,6 +5,7 @@ pluginManagement {
         google()
         mavenCentral()
         gradlePluginPortal()
+        maven { url "https://repo.grails.org/grails/core/" }
     }
 }
 dependencyResolutionManagement {
@@ -13,6 +14,7 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
         mavenCentral()
+        maven { url "https://repo.grails.org/grails/core/" }
         maven { url 'https://jitpack.io' }
         maven {
             url "https://dl.bintary.com/wotomas/maven"
