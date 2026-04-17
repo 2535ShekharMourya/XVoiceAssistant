@@ -7,7 +7,7 @@
 
         <variable
             name="assistantViewModel"
-            type="com.example.mygoogleassistant.assistant.AssistantViewModel" />
+            type="com.example.xVoiceAssistant.assistant.AssistantViewModel" />
     </data>
 
     <LinearLayout
