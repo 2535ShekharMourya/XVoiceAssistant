@@ -9,7 +9,7 @@ plugins {
 
 
 android {
-    namespace 'com.example.mygoogleassistant'
+    namespace 'com.example.xVoiceAssistant'
     compileSdk 34
 
     defaultConfig {
