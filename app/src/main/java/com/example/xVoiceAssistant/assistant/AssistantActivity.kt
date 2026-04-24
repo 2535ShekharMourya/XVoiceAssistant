@@ -11,7 +11,6 @@ import android.speech.SpeechRecognizer
 import android.speech.tts.TextToSpeech
 //import androidx.databinding.DataBindingUtil
 import com.example.xVoiceAssistant.R
-//import com.example.mygoogleassistant.databinding.ActivityAssistantBinding
 import com.example.xVoiceAssistant.utils.Utils
 
 import android.animation.Animator

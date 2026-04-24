@@ -20,7 +20,6 @@ import com.example.xVoiceAssistant.assistant.NewsAdapter
 import com.example.xVoiceAssistant.databinding.ActivityMainBinding
 import com.example.xVoiceAssistant.functions.GoogleLensActivity
 import com.example.xVoiceAssistant.uiscreens.NewsActivity
-//import com.example.mygoogleassistant.topnews.NewsActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -62,6 +61,13 @@ class MainActivity : AppCompatActivity() {
         googleLens = findViewById(R.id.action_google_lens)
         explore = findViewById(R.id.action_explore)
         hiGoogle = findViewById(R.id.hiGoogle)
+
+        val appInfo = packageManager.getApplicationInfo(packageName, PackageManager.GET_META_DATA)
+        val apiKey = appInfo.metaData.getString("com.google.android.geo.API_KEY")
+
+        Log.d("checkShekhar",apiKey.toString())
+
+
 
         getCurrentLocation.setOnClickListener {
             startActivity(Intent(this,CurrentLocationActivity::class.java))
