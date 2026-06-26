@@ -9,22 +9,15 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.blogspot.atifsoftwares.animatoolib.Animatoo
-import com.example.xVoiceAssistant.Networking.RetrofitClient
 import com.example.xVoiceAssistant.utils.Utils.setCustomActionBar
 import com.example.xVoiceAssistant.R
 import com.example.xVoiceAssistant.assistant.AssistantActivity
 import com.example.xVoiceAssistant.assistant.ExploreActivity
-import com.example.xVoiceAssistant.assistant.NewsAdapter
 import com.example.xVoiceAssistant.databinding.ActivityMainBinding
 import com.example.xVoiceAssistant.functions.GoogleLensActivity
-import com.example.xVoiceAssistant.uiscreens.NewsActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+
 
 class MainActivity : AppCompatActivity() {
     // Activity and Fragment known as UI Controller
@@ -39,7 +32,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var hiGoogle: ImageView
     private lateinit var googleLens: ImageView
     private lateinit var explore: ImageView
-    lateinit var adapter: NewsAdapter
     private val Record_Audio_Request_Code:Int=1
 
 
@@ -48,13 +40,6 @@ class MainActivity : AppCompatActivity() {
         binding=ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setCustomActionBar(supportActionBar, this)
-
-        makeApiRequest()
-
-       // val topN=findViewById<TextView>(R.id.news_top)
-       /* topN.setOnClickListener {
-            startActivity(Intent(this,NewsActivity::class.java))
-        }*/
         val getCurrentLocation=findViewById<FloatingActionButton>(R.id.get_location)
         // id's of views from xml
         imageView = findViewById(R.id.action_button)
@@ -86,9 +71,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, AssistantActivity::class.java))
             Animatoo.animateDiagonal(this)
         }
-        binding.AllNews.setOnClickListener {
-            startActivity(Intent(this,NewsActivity::class.java))
-        }
+
         hiGoogle.setOnClickListener {
             startActivity(Intent(this, AssistantActivity::class.java))
             Animatoo.animateSplit(this)
@@ -103,33 +86,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun makeApiRequest() {
-        CoroutineScope(Dispatchers.IO).launch {
-            Log.d("NewsResponse","Start Coroutine scope")
-            try {
-                val response = RetrofitClient.instance.getTopHeadlines()
-                Log.d("NewsResponse","New Response getting")
-                if (response.isSuccessful) {
-                    val newsResponse = response.body()
-                    Log.d("NewsResponse","News Article fetch successfully")
-                    withContext(Dispatchers.Main) {
-                        val listOfArticle=newsResponse?.articles
-                        adapter = NewsAdapter(listOfArticle,this@MainActivity)
-                        binding.newsRecyclerview.adapter = adapter
-                        binding.newsRecyclerview.layoutManager =
-                            LinearLayoutManager(this@MainActivity)
 
-                    }
-                } else {
-                    Log.d("NewsResponse", "failed to fetch News Articles")
-                }
-            }catch (e:Exception){
-                Log.d("NewsResponse", "failed to fetch News Articles")
-                e.printStackTrace()
-            }
-        }
-
-    }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)

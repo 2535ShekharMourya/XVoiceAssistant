@@ -27,7 +27,7 @@
         android:visibility="visible"
         android:focusable="true"
         android:src="@drawable/hi"
-        app:layout_constraintBottom_toTopOf="@+id/news_Recyclerview"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -56,27 +56,6 @@
                 android:layout_marginStart="20dp"
                 android:contentDescription="@string/todo"
                 android:src="@drawable/explore">
-
-            </ImageView>
-        </LinearLayout>
-
-        <View
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1">
-
-        </View>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="50dp">
-
-            <ImageView
-                android:id="@+id/All_news"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="20dp"
-                android:contentDescription="@string/todo"
-                android:src="@drawable/news_icon">
 
             </ImageView>
         </LinearLayout>
@@ -125,27 +104,7 @@
         </LinearLayout>
     </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/news_Recyclerview"
-        android:layout_width="389dp"
-        android:layout_height="606dp"
-        android:layout_marginBottom="24dp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:listitem="@layout/news_items" />
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:text="Top News"
-        app:layout_constraintBottom_toTopOf="@+id/news_Recyclerview"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
